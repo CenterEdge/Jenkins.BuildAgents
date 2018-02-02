@@ -1,0 +1,100 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_session_token": "",
+    "aws_region": "us-east-1",
+    "aws_winrm_username": "Administrator",
+    "aws_instance_type": "t2.large",
+    "aws_target_ami": "jenkins-agent-windows-buildtools2017",
+    "aws_security_group": "",
+    "aws_associate_public_ip_address": "true",
+    "aws_ena_support": "false",
+    "aws_userdata_file": "scripts/aws-windows.userdata",
+    "repository": "",
+    "package_type": "",
+    "packages": "git jre8",
+    "upgrade": "",
+    "nuget_version": "4.5.1"
+  },
+
+  "builders": [
+    {
+      "type": "amazon-ebs",
+
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "token": "{{user `aws_session_token`}}",
+
+      "communicator": "winrm",
+      "winrm_username": "{{user `aws_winrm_username`}}",
+      "user_data_file": "{{user `aws_userdata_file`}}",
+
+      "region": "{{user `aws_region`}}",
+
+      "instance_type": "{{user `aws_instance_type`}}",
+
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "Windows_Server-2012-R2_RTM-English-64Bit-Base-*",
+          "root-device-type": "ebs"
+        },
+        "owners": ["amazon"],
+        "most_recent": true
+      },
+
+      "ami_name": "{{user `aws_target_ami` | clean_ami_name}}-{{timestamp}}",
+
+      "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
+
+      "security_group_id": "{{user `aws_security_group`}}",
+
+      "ena_support": "{{user `aws_ena_support`}}",
+
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": 100,
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ],
+
+      "tags": {
+        "packages": "{{user `packages`}} msbuild2017 windows10sdk"
+      },
+      "run_tags": {"packages": "{{user `packages`}} msbuild2017 windows10sdk"},
+
+      "ami_users": [
+        "097130181434"
+      ],
+      "snapshot_users": [
+        "097130181434"
+      ]
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type":"powershell",
+      "scripts": [
+        "scripts/aws-windows-2012-configure-ec2service.ps1",
+        "scripts/aws-windows-timesync.ps1",
+        "scripts/windows-configure-chocolatey.ps1",
+        "scripts/windows-install-packages.ps1",
+        "scripts/buildtools2017.ps1",
+        "scripts/windows-nuget.ps1",
+        "scripts/windows10sdk.ps1"
+      ],
+      "environment_vars": [
+        "repository={{user `repository`}}",
+        "package_type={{user `package_type`}}",
+        "packages={{user `packages`}}",
+        "upgrade={{user `upgrade`}}",
+        "NUGET_VERSION={{user `nuget_version`}}"
+      ],
+      "pause_before": "30s"
+    }
+  ]
+}
