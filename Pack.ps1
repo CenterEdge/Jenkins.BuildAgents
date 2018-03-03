@@ -22,4 +22,4 @@ if ($cred.UseToken) {
     $params += @("-var", "aws_session_token=$($cred.Token)")
 }
 
-packer build $params $Script
+packer build -on-error=cleanup $params $Script
