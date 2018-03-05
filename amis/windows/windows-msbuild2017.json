@@ -10,7 +10,7 @@
     "aws_security_group": "",
     "aws_associate_public_ip_address": "true",
     "aws_ena_support": "false",
-    "aws_userdata_file": "scripts/aws-windows.userdata",
+    "aws_userdata_file": "amis/windows/scripts/aws-windows.userdata",
     "repository": "",
     "package_type": "",
     "packages": "git jre8",
@@ -79,13 +79,13 @@
     {
       "type":"powershell",
       "scripts": [
-        "scripts/aws-windows-2012-configure-ec2service.ps1",
-        "scripts/aws-windows-timesync.ps1",
-        "scripts/windows-configure-chocolatey.ps1",
-        "scripts/windows-install-packages.ps1",
-        "scripts/buildtools2017.ps1",
-        "scripts/windows-nuget.ps1",
-        "scripts/windows10sdk.ps1"
+        "amis/windows/scripts/aws-windows-2012-configure-ec2service.ps1",
+        "amis/windows/scripts/aws-windows-timesync.ps1",
+        "amis/windows/scripts/windows-configure-chocolatey.ps1",
+        "amis/windows/scripts/windows-install-packages.ps1",
+        "amis/windows/scripts/buildtools2017.ps1",
+        "amis/windows/scripts/windows-nuget.ps1",
+        "amis/windows/scripts/windows10sdk.ps1"
       ],
       "environment_vars": [
         "repository={{user `repository`}}",

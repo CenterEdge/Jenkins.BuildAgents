@@ -1,0 +1,43 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_session_token": "",
+    "aws_region": "us-east-1",
+    "aws_security_group": "",
+    "aws_instance_type": "m3.large",
+    "aws_associate_public_ip_address": "true",
+    "aws_ena_support": "false",
+    "aws_userdata_file": "",
+    "repository": "",
+    "package_type": ""
+  },
+  "builders": [
+    {
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "token": "{{user `aws_session_token`}}",
+        "ami_name": "phoenix-webui-{{timestamp}}",
+        "instance_type": "{{user `aws_instance_type`}}",
+        "region": "{{user `aws_region`}}",
+        "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
+        "security_group_id": "{{user `aws_security_group`}}",
+        "source_ami": "ami-4fffc834",
+        "ssh_username": "ec2-user",
+        "type": "amazon-ebs",
+        "ena_support": "{{user `aws_ena_support`}}",
+        "ami_users": [
+            "097130181434"
+        ],
+        "snapshot_users": [
+            "097130181434"
+        ]
+    }
+  ],
+  "provisioners": [
+    {
+        "type": "shell",
+        "script": "amis/aws-linux-hvm/scripts/phoenix-webui.sh"
+    }
+  ]
+}
