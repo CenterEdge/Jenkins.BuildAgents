@@ -1,5 +1,6 @@
 {
   "variables": {
+    "source_ami": "ami-48d1fc32",
     "aws_access_key": "",
     "aws_secret_key": "",
     "aws_session_token": "",
@@ -22,7 +23,7 @@
         "region": "{{user `aws_region`}}",
         "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
         "security_group_id": "{{user `aws_security_group`}}",
-        "source_ami": "ami-4fffc834",
+        "source_ami": "{{user `source_ami`}}",
         "ssh_username": "ec2-user",
         "type": "amazon-ebs",
         "ena_support": "{{user `aws_ena_support`}}",
