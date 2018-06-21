@@ -1,6 +1,6 @@
 {
   "variables": {
-    "source_ami": "ami-48d1fc32",
+    "source_ami": "ami-5b820a24",
     "aws_access_key": "",
     "aws_secret_key": "",
     "aws_session_token": "",
@@ -18,7 +18,7 @@
         "access_key": "{{user `aws_access_key`}}",
         "secret_key": "{{user `aws_secret_key`}}",
         "token": "{{user `aws_session_token`}}",
-        "ami_name": "phoenix-webui-{{timestamp}}",
+        "ami_name": "jenkins-linux-git-docker-{{timestamp}}",
         "instance_type": "{{user `aws_instance_type`}}",
         "region": "{{user `aws_region`}}",
         "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
@@ -32,13 +32,24 @@
         ],
         "snapshot_users": [
             "097130181434"
-        ]
+        ],
+        "launch_block_device_mappings": [
+          {
+            "device_name": "/dev/xvda",
+            "volume_size": 50,
+            "volume_type": "gp2",
+            "delete_on_termination": true
+          }
+        ],
+        "run_tags": {
+          "Name": "Packer jenkins-linux-git-docker"
+        }
     }
   ],
   "provisioners": [
     {
         "type": "shell",
-        "script": "amis/aws-linux-hvm/scripts/phoenix-webui.sh"
+        "script": "amis/aws-linux-hvm/scripts/git-docker.sh"
     }
   ]
 }
