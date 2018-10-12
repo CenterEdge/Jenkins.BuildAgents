@@ -16,7 +16,7 @@ winrm set winrm/config/winrs '@{MaxShellsPerUser="0"}'
 winrm set winrm/config '@{MaxTimeoutms="7200000"}'
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
-winrm set winrm/config/service/auth '@{CredSSP="true"}'
+winrm set winrm/config/service/auth '@{CredSSP="false"}'
 winrm set winrm/config/client '@{TrustedHosts="*"}'
 
 

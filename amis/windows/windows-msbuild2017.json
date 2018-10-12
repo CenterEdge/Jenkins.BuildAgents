@@ -13,7 +13,7 @@
     "aws_userdata_file": "amis/windows/scripts/aws-windows.userdata",
     "repository": "",
     "package_type": "",
-    "packages": "git jre8",
+    "packages": "git git-lfs jre8",
     "upgrade": "",
     "nuget_version": "4.5.1"
   },
@@ -95,6 +95,12 @@
         "NUGET_VERSION={{user `nuget_version`}}"
       ],
       "pause_before": "30s"
+    },
+    {
+      "type":"powershell",
+      "inline": [
+        "git config --system --unset credential.helper"
+      ]
     }
   ]
 }
