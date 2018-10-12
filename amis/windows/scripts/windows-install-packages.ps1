@@ -82,6 +82,10 @@ if (![string]::IsNullOrWhiteSpace($env:packages)) {
         } else {
             &"choco" install $packageName --yes
         }
+
+        if ($LASTEXITCODE -ne 0) {
+          exit $LASTEXITCODE
+        }
     }
 }
 
