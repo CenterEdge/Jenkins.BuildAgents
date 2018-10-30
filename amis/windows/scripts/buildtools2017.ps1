@@ -14,12 +14,12 @@ Start-Process vs_BuildTools.exe -ArgumentList `
     '--quiet', '--norestart', '--nocache' `
     -NoNewWindow -Wait
 
-setx /M PATH $(${Env:PATH} + ";${Env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\")
+setx /M PATH $(${Env:PATH} + ";${Env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\;${Env:ProgramFiles}\dotnet\")
 
 # Install .NET Framework targeting packs
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-@('4.7.1') | ForEach-Object {
+@('4.5.2', '4.7.1') | ForEach-Object {
     Invoke-WebRequest -UseBasicParsing https://dotnetbinaries.blob.core.windows.net/referenceassemblies/v${_}.zip -OutFile referenceassemblies.zip
     [System.IO.Compression.ZipFile]::ExtractToDirectory("referenceassemblies.zip", "${Env:ProgramFiles(x86)}\Reference Assemblies\Microsoft\Framework\.NETFramework\")
     Remove-Item -Force referenceassemblies.zip
