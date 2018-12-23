@@ -1,14 +1,13 @@
 {
   "variables": {
-    "source_ami": "ami-5b820a24",
     "aws_access_key": "",
     "aws_secret_key": "",
     "aws_session_token": "",
     "aws_region": "us-east-1",
     "aws_security_group": "",
-    "aws_instance_type": "m3.large",
+    "aws_instance_type": "m5.large",
     "aws_associate_public_ip_address": "true",
-    "aws_ena_support": "false",
+    "aws_ena_support": "true",
     "aws_userdata_file": "",
     "repository": "",
     "package_type": ""
@@ -20,19 +19,23 @@
         "token": "{{user `aws_session_token`}}",
         "ami_name": "jenkins-linux-git-docker-{{timestamp}}",
         "instance_type": "{{user `aws_instance_type`}}",
+
+        "source_ami_filter": {
+          "filters": {
+            "virtualization-type": "hvm",
+            "name": "amzn2-ami-hvm-*-x86_64-gp2",
+            "root-device-type": "ebs"
+          },
+          "owners": ["amazon"],
+          "most_recent": true
+        },
+
         "region": "{{user `aws_region`}}",
         "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
         "security_group_id": "{{user `aws_security_group`}}",
-        "source_ami": "{{user `source_ami`}}",
         "ssh_username": "ec2-user",
         "type": "amazon-ebs",
         "ena_support": "{{user `aws_ena_support`}}",
-        "ami_users": [
-            "097130181434"
-        ],
-        "snapshot_users": [
-            "097130181434"
-        ],
         "launch_block_device_mappings": [
           {
             "device_name": "/dev/xvda",
@@ -41,6 +44,7 @@
             "delete_on_termination": true
           }
         ],
+        "encrypt_boot": true,
         "run_tags": {
           "Name": "Packer jenkins-linux-git-docker"
         }

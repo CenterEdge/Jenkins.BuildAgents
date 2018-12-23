@@ -60,6 +60,7 @@
           "delete_on_termination": true
         }
       ],
+      "encrypt_boot": true,
 
       "tags": {
         "packages": "{{user `packages`}} msbuild2017 windows10sdk"
