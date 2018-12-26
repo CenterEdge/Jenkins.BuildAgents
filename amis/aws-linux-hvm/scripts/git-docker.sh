@@ -10,6 +10,7 @@ sudo yum install -y git git-lfs java-1.8.0
 
 # Install Docker
 sudo amazon-linux-extras install docker
+sudo systemctl enable docker
 
 # Ensure Docker access for ec2-user
 sudo usermod -a -G docker ec2-user
