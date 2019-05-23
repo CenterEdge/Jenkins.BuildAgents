@@ -78,9 +78,9 @@ if (![string]::IsNullOrWhiteSpace($env:packages)) {
         }
 
         if (![string]::IsNullOrWhiteSpace($packageVersion)) {
-            &"choco" install $packageName --yes --version $packageVersion
+            &"choco" install $packageName --yes --version $packageVersion --no-progress
         } else {
-            &"choco" install $packageName --yes
+            &"choco" install $packageName --yes --no-progress
         }
 
         if ($LASTEXITCODE -ne 0) {

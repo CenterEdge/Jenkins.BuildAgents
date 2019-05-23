@@ -1,5 +1,17 @@
-$ErrorActionPreference = 'Stop'
+# $ErrorActionPreference = 'Stop'
 
-Invoke-WebRequest -UseBasicParsing http://download.microsoft.com/download/2/1/2/2122BA8F-7EA6-4784-9195-A8CFB7E7388E/StandaloneSDK/sdksetup.exe -OutFile sdksetup.exe
+# $sdksetup = Join-Path ${env:TEMP} sdksetup.exe
 
-Start-Process -FilePath "sdksetup.exe" -ArgumentList /Quiet, /NoRestart, /Log, c:\install_logs\sdksetup.log -NoNewWindow -Wait
+# Remove-Item $sdksetup -Force -ErrorAction SilentlyContinue
+# Invoke-WebRequest -UseBasicParsing http://download.microsoft.com/download/2/1/2/2122BA8F-7EA6-4784-9195-A8CFB7E7388E/StandaloneSDK/sdksetup.exe -OutFile $sdksetup
+
+# if (-not (Test-Path C:\install_logs)) {
+#     New-Item -ItemType Directory c:\install_logs | Out-Null
+# }
+
+# Start-Process -FilePath $sdksetup -ArgumentList /Quiet, /NoRestart, /Log, c:\install_logs\sdksetup10.log -NoNewWindow -Wait
+
+choco install -y "windows-sdk-10.0" --no-progress
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
