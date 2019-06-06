@@ -7,7 +7,8 @@
     "repository": "",
     "package_type": "",
     "packages": "git git-lfs jre8 vswhere nodejs.8.16.0",
-    "upgrade": ""
+    "upgrade": "",
+    "nuget_version": "4.9.4"
   },
   "builders": [
     {
@@ -33,13 +34,16 @@
       "scripts": [
         "amis/windows/scripts/windows-configure-chocolatey.ps1",
         "amis/windows/scripts/docker.ps1",
-        "amis/windows/scripts/windows-install-packages.ps1"
+        "amis/windows/scripts/windows-install-packages.ps1",
+        "amis/windows/scripts/windows-nuget.ps1",
+        "amis/windows/scripts/buildtools2017.ps1"
       ],
       "environment_vars": [
         "repository={{user `repository`}}",
         "package_type={{user `package_type`}}",
         "packages={{user `packages`}}",
-        "upgrade={{user `upgrade`}}"
+        "upgrade={{user `upgrade`}}",
+        "NUGET_VERSION={{user `nuget_version`}}"
       ],
       "pause_before": "60s"
     },
