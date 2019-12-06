@@ -6,9 +6,9 @@
     "password": "Centeredge123",
     "repository": "",
     "package_type": "",
-    "packages": "git git-lfs jre8 vswhere nodejs.8.16.0",
+    "packages": "git git-lfs jre8 vswhere nodejs.12.13.1",
     "upgrade": "",
-    "nuget_version": "4.9.4"
+    "nuget_version": "5.4.0"
   },
   "builders": [
     {
@@ -37,6 +37,7 @@
         "amis/windows/scripts/windows-install-packages.ps1",
         "amis/windows/scripts/windows-nuget.ps1",
         "amis/windows/scripts/buildtools2017.ps1",
+        "amis/windows/scripts/buildtools2019.ps1",
         "amis/windows/scripts/net-reference-assemblies.ps1"
       ],
       "environment_vars": [
