@@ -44,7 +44,7 @@
         "most_recent": true
       },
 
-      "ami_name": "{{user `aws_target_ami` | clean_ami_name}}-{{timestamp}}",
+      "ami_name": "{{user `aws_target_ami` | clean_resource_name}}-{{timestamp}}",
 
       "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
 

@@ -43,7 +43,7 @@ Set-AWSCredential -AccessKey YourAccessKeyFromStep1 -SecretKey YourSecretKeyFrom
 Set-AWSCredential -SourceProfile myCredentials -RoleArn arn:aws:iam::097130181434:role/PowerUser -MfaSerial arn:aws:iam::yourmfaserialnumber -StoreAs myRoleProfile
 ```
 ```powershell
-Set-WSCredential myRoleProfile
+Set-AWSCredential myRoleProfile
 ```
 
 4. Verify Setup with:
