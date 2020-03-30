@@ -5,7 +5,7 @@ if (-not (Test-Path "${Env:ProgramFiles(x86)}\Reference Assemblies\Microsoft\Fra
     New-Item -ItemType Directory "${Env:ProgramFiles(x86)}\Reference Assemblies\Microsoft\Framework\.NETFramework\" | Out-Null
 }
 
-@('4.0', '4.5.2', '4.6.2', '4.7.2') | ForEach-Object {
+@('4.0', '4.5.2', '4.6.2', '4.7.2', '4.8') | ForEach-Object {
     $tempFolder = Join-Path ${env:TEMP} "referenceassemblies"
     New-Item -ItemType Directory $tempFolder | Out-Null
 
