@@ -47,6 +47,10 @@
         "encrypt_boot": true,
         "run_tags": {
           "Name": "Packer jenkins-linux-git-docker"
+        },
+        "tags": {
+          "Name": "Jenkins Agent Linux",
+          "Base_AMI_Name": "{{ .SourceAMIName }}"
         }
     }
   ],
