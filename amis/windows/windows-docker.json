@@ -6,7 +6,7 @@
     "password": "Centeredge123",
     "repository": "",
     "package_type": "",
-    "packages": "git git-lfs jre8 vswhere nodejs.12.13.1",
+    "packages": "git git-lfs jre8 vswhere nodejs.12.13.1 gh",
     "upgrade": "",
     "nuget_version": "5.4.0"
   },
