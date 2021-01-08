@@ -13,45 +13,36 @@
     "aws_userdata_file": "amis/windows/scripts/aws-windows.userdata",
     "repository": "",
     "package_type": "",
-    "packages": "git git-lfs jre8 vswhere nodejs.12.13.1 gh",
+    "packages": "git git-lfs jre8 vswhere nodejs.12.13.1",
     "upgrade": "",
     "nuget_version": "5.8.0"
   },
-
   "builders": [
     {
       "type": "amazon-ebs",
-
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
       "token": "{{user `aws_session_token`}}",
-
       "communicator": "winrm",
       "winrm_username": "{{user `aws_winrm_username`}}",
       "user_data_file": "{{user `aws_userdata_file`}}",
-
       "region": "{{user `aws_region`}}",
-
       "instance_type": "{{user `aws_instance_type`}}",
-
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
           "name": "Windows_Server-2012-R2_RTM-English-64Bit-Base-*",
           "root-device-type": "ebs"
         },
-        "owners": ["amazon"],
+        "owners": [
+          "amazon"
+        ],
         "most_recent": true
       },
-
       "ami_name": "{{user `aws_target_ami` | clean_resource_name}}-{{timestamp}}",
-
       "associate_public_ip_address": "{{user `aws_associate_public_ip_address`}}",
-
       "security_group_id": "{{user `aws_security_group`}}",
-
       "ena_support": "{{user `aws_ena_support`}}",
-
       "launch_block_device_mappings": [
         {
           "device_name": "/dev/sda1",
@@ -60,17 +51,17 @@
           "delete_on_termination": true
         }
       ],
-
       "tags": {
         "packages": "{{user `packages`}} msbuild2017 msbuild2019 windows10sdk"
       },
-      "run_tags": {"packages": "{{user `packages`}} msbuild2017 msbuild2019 windows10sdk"}
+      "run_tags": {
+        "packages": "{{user `packages`}} msbuild2017 msbuild2019 windows10sdk"
+      }
     }
   ],
-
   "provisioners": [
     {
-      "type":"powershell",
+      "type": "powershell",
       "elevated_user": "Administrator",
       "elevated_password": "{{ .WinRMPassword }}",
       "scripts": [
@@ -85,7 +76,7 @@
       "type": "windows-restart"
     },
     {
-      "type":"powershell",
+      "type": "powershell",
       "elevated_user": "Administrator",
       "elevated_password": "{{ .WinRMPassword }}",
       "scripts": [
@@ -111,7 +102,7 @@
       ]
     },
     {
-      "type":"powershell",
+      "type": "powershell",
       "inline": [
         "git config --system --unset credential.helper"
       ]
