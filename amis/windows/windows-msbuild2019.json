@@ -83,6 +83,7 @@
         "amis/windows/scripts/aws-windows-2012-configure-ec2service.ps1",
         "amis/windows/scripts/windows-configure-chocolatey.ps1",
         "amis/windows/scripts/windows-install-packages.ps1",
+        "amis/windows/scripts/git-hub-cli.ps1",
         "amis/windows/scripts/windows-nuget.ps1",
         "amis/windows/scripts/buildtools2017.ps1",
         "amis/windows/scripts/buildtools2019.ps1",

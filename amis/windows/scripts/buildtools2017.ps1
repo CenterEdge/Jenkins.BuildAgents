@@ -19,7 +19,7 @@ Start-Process $vsbuildtools -ArgumentList `
     -NoNewWindow -Wait
 
 if (${env:set_msbuild2017_path} -ne "false") {
-    setx /M PATH $(${Env:PATH} + ";${Env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\;${Env:ProgramFiles}\dotnet\")
+    setx /M PATH $(${Env:PATH} + ";${Env:ProgramFiles(x86)}\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\;${Env:ProgramFiles}\dotnet\;")
 }
 
 # Install .NET Core SDK 2.2 (.1xx series for MSBuild 2017 compatibility)
