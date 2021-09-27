@@ -13,7 +13,7 @@
     "aws_userdata_file": "amis/windows/scripts/aws-windows.userdata",
     "repository": "",
     "package_type": "",
-    "packages": "git git-lfs jre8 vswhere nodejs.12.13.1",
+    "packages": "git git-lfs jre8 vswhere nodejs.16.10.0",
     "upgrade": "",
     "nuget_version": "5.8.0"
   },
