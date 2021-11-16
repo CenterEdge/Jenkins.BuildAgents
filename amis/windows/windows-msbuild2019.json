@@ -13,7 +13,7 @@
     "aws_userdata_file": "amis/windows/scripts/aws-windows.userdata",
     "repository": "",
     "package_type": "",
-    "packages": "git git-lfs jre8 vswhere nodejs.16.10.0",
+    "packages": "git git-lfs openjdk11jre vswhere nodejs.16.10.0",
     "upgrade": "",
     "nuget_version": "5.8.0"
   },
@@ -91,7 +91,8 @@
         "amis/windows/scripts/net-reference-assemblies.ps1",
         "amis/windows/scripts/windows81sdk.ps1",
         "amis/windows/scripts/windows10sdk.ps1",
-        "amis/windows/scripts/crystal-reports-runtime.ps1"
+        "amis/windows/scripts/crystal-reports-runtime.ps1",
+        "amis/windows/scripts/jenkins-agent-install.ps1"
       ],
       "environment_vars": [
         "repository={{user `repository`}}",
