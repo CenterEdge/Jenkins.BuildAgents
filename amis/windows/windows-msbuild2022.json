@@ -6,7 +6,7 @@
     "aws_region": "us-east-1",
     "aws_winrm_username": "Administrator",
     "aws_instance_type": "t2.large",
-    "aws_target_ami": "jenkins-agent-windows-buildtools2019",
+    "aws_target_ami": "jenkins-agent-windows-buildtools2022",
     "aws_security_group": "",
     "aws_associate_public_ip_address": "true",
     "aws_ena_support": "true",
