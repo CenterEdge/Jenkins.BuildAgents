@@ -9,7 +9,7 @@ Invoke-WebRequest -UseBasicParsing https://aka.ms/vs/17/release/vs_BuildTools.ex
 # .NET Core skip first time experience, Installer won't detect DOTNET_SKIP_FIRST_TIME_EXPERIENCE if ENV is used, must use setx /M
 setx /M DOTNET_SKIP_FIRST_TIME_EXPERIENCE 1
 
-Start-Process $vsbuildtools -ArgumentList '--add', 'Microsoft.VisualStudio.Workload.MSBuildTools', '--add', 'Microsoft.VisualStudio.Workload.NetCoreBuildTools', '--add', 'Microsoft.VisualStudio.Workload.WebBuildTools', '--add', 'Microsoft.VisualStudio.Workload.VCTools', '--add', 'Microsoft.VisualStudio.Workload.VisualStudioExtensionBuildTools', '--quiet', '--norestart', '--nocache' -NoNewWindow -Wait
+Start-Process $vsbuildtools -ArgumentList '--add', 'Microsoft.VisualStudio.Workload.MSBuildTools', '--add', 'Microsoft.VisualStudio.Component.CoreBuildTools', '--add', 'Microsoft.NetCore.Component.SDK', '--add', 'Microsoft.VisualStudio.Workload.WebBuildTools', '--add', 'Microsoft.VisualStudio.Workload.VCTools', '--add', 'Microsoft.VisualStudio.Workload.VisualStudioExtensionBuildTools', '--quiet', '--norestart', '--nocache' -NoNewWindow -Wait
 
 if (${Env:PATH}.EndsWith(';')) {
     $path = "${Env:PATH}${Env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\;${Env:ProgramFiles}\dotnet\;"
