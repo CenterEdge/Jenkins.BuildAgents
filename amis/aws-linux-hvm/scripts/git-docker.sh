@@ -1,18 +1,9 @@
 #!/bin/bash
 
-# Remove old Java
-sudo yum remove -y java-1.7.0-openjdk
-
-# Install Java and Git
-# This script assumes Docker is baked into the AMI
-sudo yum update -y
-sudo yum install -y git git-lfs java-1.8.0
-
-# Install Docker
-sudo amazon-linux-extras install docker
+sudo yum install -y git git-lfs
+sudo amazon-linux-extras install java-openjdk11 docker
+# Autostart / Ensure Docker access for ec2-user
 sudo systemctl enable docker
-
-# Ensure Docker access for ec2-user
 sudo usermod -a -G docker ec2-user
 
 # Install docker-compose
