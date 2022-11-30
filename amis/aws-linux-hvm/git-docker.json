@@ -50,7 +50,8 @@
         },
         "tags": {
           "Name": "Jenkins Agent Linux",
-          "Base_AMI_Name": "{{ .SourceAMIName }}"
+          "Base_AMI_Name": "{{ .SourceAMIName }}",
+          "JDK": "java-openjdk11"
         }
     }
   ],
