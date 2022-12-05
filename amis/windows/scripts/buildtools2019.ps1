@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue' # Speeds up download
 
 # Install MSBuild
-
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls11, [Net.SecurityProtocolType]::Tls12, [Net.SecurityProtocolType]::Ssl3
 $vsbuildtools = Join-Path ${env:TEMP} vs_BuildTools2019.exe
 Invoke-WebRequest -UseBasicParsing https://aka.ms/vs/16/release/vs_BuildTools.exe -OutFile $vsbuildtools
 
