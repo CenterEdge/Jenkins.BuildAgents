@@ -22,11 +22,10 @@
 
         "source_ami_filter": {
           "filters": {
-            "virtualization-type": "hvm",
-            "name": "amzn2-ami-hvm-*-x86_64-gp2",
-            "root-device-type": "ebs"
+            "name": "al2023-ami-2023*",
+            "architecture": "x86_64"
           },
-          "owners": ["amazon"],
+          "owners": ["137112412989"],
           "most_recent": true
         },
 
@@ -40,7 +39,7 @@
           {
             "device_name": "/dev/xvda",
             "volume_size": 200,
-            "volume_type": "gp2",
+            "volume_type": "gp3",
             "delete_on_termination": true
           }
         ],
@@ -51,7 +50,7 @@
         "tags": {
           "Name": "Jenkins Agent Linux",
           "Base_AMI_Name": "{{ .SourceAMIName }}",
-          "JDK": "java-openjdk11"
+          "JDK": "java-17-amazon-corretto"
         }
     }
   ],
